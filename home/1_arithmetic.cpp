@@ -230,8 +230,6 @@ int main() {
 		poliz = buildPoliz(infix);
 		value = evaluatePoliz(poliz);
 		cout << value << endl;
-        // for (int i = 0; i < poliz.size(); i++)
-            // delete poliz[i];
 	}
 	return 0;
 }
