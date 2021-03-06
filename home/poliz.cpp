@@ -10,6 +10,8 @@ int PRIORITY[] = {-1, -1, 0, 0, 1};
 
 class Lexem {
 public:
+    virtual ~Lexem(){
+    };
     OPERATOR virtual getType() {
     };
     int virtual getPriority() {
@@ -166,10 +168,12 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
             continue;
         }
         if (infix[i]->getType() == RBRACKET) {
+            delete infix[i];
             while (ops.top() -> getType() != LBRACKET) {
                 poliz.push_back(ops.top());
                 ops.pop();
             }
+            delete ops.top();
             ops.pop();
         }
 
@@ -200,15 +204,20 @@ int evaluatePoliz(vector<Lexem *> poliz) {
         }
         if (poliz[i] -> isNumber() == false) {
             int a = evalstack.top() -> getValue();
+            delete evalstack.top();
             evalstack.pop();
             int b = evalstack.top() -> getValue();
+            delete evalstack.top();
             evalstack.pop();
             evalstack.push(new Number);
             evalstack.top() -> setValue(poliz[i] -> getValue(a, b));
+            delete poliz[i];
             continue;
         }
     }
-    return evalstack.top() -> getValue();
+    int answ = evalstack.top() -> getValue();
+    delete evalstack.top();
+    return answ;
 }
 
 int main() {
@@ -221,6 +230,8 @@ int main() {
 		poliz = buildPoliz(infix);
 		value = evaluatePoliz(poliz);
 		cout << value << endl;
+        // for (int i = 0; i < poliz.size(); i++)
+            // delete poliz[i];
 	}
 	return 0;
 }
