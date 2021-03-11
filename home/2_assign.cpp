@@ -270,7 +270,7 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
                     (infix[i] -> getType() == MINUS) or
                     (infix[i] -> getType() == MULTIPLY) or
                     (infix[i] -> getType() == ASSIGN)) {
-            while ((ops.size() > 0) and (ops.top() -> getPriority() >= infix[i] -> getPriority())) {
+            while ((ops.size() > 0) and (ops.top() -> getPriority() > infix[i] -> getPriority())) {
                 poliz.push_back(ops.top());
                 ops.pop();
             }
