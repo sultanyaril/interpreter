@@ -1,7 +1,7 @@
 # Custom Interpreter
 Python-like Interpreter created by MSU Student, **Yarylgassimov Sultan**
 
-![dancing bart](https://i.pinimg.com/originals/dd/1f/32/dd1f323f313cf721f8fd2a2857116059.gif =150x)
+![dancing bart](https://i.pinimg.com/originals/dd/1f/32/dd1f323f313cf721f8fd2a2857116059.gif)
 
 ## Installation
 
