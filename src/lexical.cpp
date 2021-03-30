@@ -39,10 +39,10 @@ Lexem *get_var(string & codeline, int & i) {
             name += codeline[i];
             i++;
         }
-        return new Variable(name);
         if (VAR.find(name) == VAR.end()) {
             VAR[name] = 0;
         }
+        return new Variable(name);
     }
     return NULL;
 }
@@ -52,8 +52,10 @@ vector<Lexem *> parseLexem(string & codeline) {
     for (int i = 0; i < codeline.size();) {
         if ((codeline[i] == ' ') or
                 (codeline[i] == '\t') or
-                (codeline[i] == '\n'))
+                (codeline[i] == '\n')) {
+            i++;
             continue;
+        }
         Lexem *lexem;
         lexem = get_oper(codeline, i);
         if (lexem != NULL) {
