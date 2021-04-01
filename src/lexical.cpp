@@ -39,8 +39,8 @@ Lexem *get_var(string & codeline, int & i) {
             name += codeline[i];
             i++;
         }
-        if (VAR.find(name) == VAR.end()) {
-            VAR[name] = 0;
+        if (variables.find(name) == variables.end()) {
+            variables[name] = 0;
         }
         return new Variable(name);
     }

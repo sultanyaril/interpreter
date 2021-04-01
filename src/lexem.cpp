@@ -17,23 +17,19 @@ string Variable::getName() {
     return name;
 }
 
-bool Variable :: isNumber() {
-    return false;
-}
-
-bool Variable :: isVariable() {
-    return true;
+TYPE Variable::type() {
+    return VARIABLE;
 }
 
 Variable :: Variable() {
 }
 
 int Variable :: getValue() {
-    return VAR[name];
+    return variables[name];
 }
 
 void Variable :: setValue(int n) {
-    VAR[name] = n;
+    variables[name] = n;
 }
 
 //FUNCTIONS OF NUMBER
@@ -41,12 +37,8 @@ Number::Number(int v) {
     setValue(v);
 }
 
-bool Number::isVariable() {
-    return false;
-}
-
-bool Number::isNumber() {
-    return true;
+TYPE Number::type() {
+    return NUMBER;
 }
 
 Number::Number() {
@@ -71,12 +63,8 @@ Oper::Oper(string & op) {
     setType(op);
 }
 
-bool Oper::isVariable() {
-    return false;
-}
-
-bool Oper::isNumber() {
-    return false;
+TYPE Oper::type() {
+    return OPER;
 }
 
 void Oper :: setType(string op) {

@@ -18,13 +18,11 @@ public:
     };
     void virtual setType(string) {
     };
-    bool virtual isNumber() {
-    };
-    bool virtual isVariable() {
-    };
     string virtual getName() {
     };
     void virtual setName(string) {
+    };
+    TYPE virtual type() {
     };
     Lexem();
 };
@@ -34,13 +32,12 @@ class Variable : public Lexem{
     string name;
 public:
     Variable(string &);
-    bool isNumber();
-    bool isVariable();
     Variable();
     int getValue();
     void setValue(int);
     string getName();
     void setName(string);
+    TYPE type();
 };
 
 
@@ -51,8 +48,7 @@ public:
     Number(int);
     int getValue();
     void setValue(int);
-    bool isNumber();
-    bool isVariable();
+    TYPE type();
 };
 
 
@@ -65,8 +61,7 @@ public:
     void setType(string);
     int getPriority();
     int getValue(Lexem *, Lexem *);
-    bool isNumber();
-    bool isVariable();
+    TYPE type();
 };
 
 #endif

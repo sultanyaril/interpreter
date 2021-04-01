@@ -7,5 +7,6 @@ using namespace std;
 #include "const.h"
 #include "lexem.h"
 void printVar();
-void printvector(vector<Lexem *> v);
+void printVector(vector<Lexem *> v);
+void clearDoubleVector(vector<vector<Lexem *>> v);
 #endif

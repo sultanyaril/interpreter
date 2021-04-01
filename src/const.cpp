@@ -1,7 +1,9 @@
 #include "const.h"
 
-map<string, int> VAR;
+map<string, int> variables;
+map<string, int> labels;
 string OPERTEXT[] = {
+    "goto", ":",
     "(", ")",
     "=",
     "or",
@@ -17,6 +19,7 @@ string OPERTEXT[] = {
     "*", "/", "%"
 };
 int PRIORITY[] = {
+    -2, -2,
     -1, -1,
     0,
     1,

@@ -4,7 +4,12 @@ using namespace std;
 #include <map>
 #include <string>
 
+enum TYPE {
+    OPER, VARIABLE, NUMBER
+};
+
 enum OPERATOR {
+    GOTO, COLON,
     LBRACKET, RBRACKET,
     ASSIGN,
     OR,
@@ -20,7 +25,8 @@ enum OPERATOR {
     MULTIPLY, DIV, MOD
 };
 extern int NUMBER_OF_OPS;
-extern map<string, int> VAR;
+extern map<string, int> variables;
+extern map<string, int> labels;
 extern string OPERTEXT[];
 extern int PRIORITY[];
 #endif

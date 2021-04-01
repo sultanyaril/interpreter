@@ -25,9 +25,9 @@ Already implemented:
 * Arithmetic
 * Assign
 * Logic
+* Goto
 
 Yet to be implemented:
-* Goto
 * If
 * While
 * Array

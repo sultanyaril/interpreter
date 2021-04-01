@@ -1,9 +1,29 @@
 #include "syntax.h"
+void initLabels(vector <Lexem *> & infix, int row) {
+    for (int i = 1; i < infix.size(); i++) {
+        if (infix[i - 1]->type() == VARIABLE &&
+            infix[i]->type() == OPER) {
+            Variable *lexemvar = (Variable *)infix[i - 1];
+            Oper *lexemop = (Oper *)infix[i];
+            if (lexemop -> getType() == COLON) {
+                labels[lexemvar->getName()] = row;
+                delete infix[i-1];
+                delete infix[i];
+                infix[i - 1] = nullptr;
+                infix[i] = nullptr;
+                i++;
+            }
+        }
+    }
+}
+
 vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
     vector<Lexem *> poliz;
     stack<Lexem *> ops;  // operators
     for (int i = 0; i < infix.size(); i++) {
-        if (infix[i]->isNumber() or infix[i]->isVariable()) {
+        if (infix[i] == nullptr)
+            continue;
+        if (infix[i]->type() == NUMBER or infix[i]->type() == VARIABLE) {
             poliz.push_back(infix[i]);
             continue;
         }
