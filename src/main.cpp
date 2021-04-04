@@ -17,12 +17,14 @@ int main() {
 		infixLines.push_back(parseLexem(codeline));
     for (int row = 0; row < infixLines.size(); ++row)
         initLabels(infixLines[row], row);
+    initJumps(infixLines);
     for (int row = 0; row < infixLines.size(); row++) {
         postfixLines.push_back(buildPoliz(infixLines[row]));
     }
     int row = 0;
-    while(0 <= row and row < (int)postfixLines.size())
+    while(0 <= row and row < (int)postfixLines.size()){
         row = evaluatePoliz(postfixLines[row], row);
+    }
     clearDoubleVector(infixLines);
 	// cout << "VALUE: " << row << endl;
     // printVar();

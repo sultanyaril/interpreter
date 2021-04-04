@@ -9,6 +9,9 @@ enum TYPE {
 };
 
 enum OPERATOR {
+    IF,
+    ELSE, ENDIF,
+    WHILE, ENDWHILE,
     GOTO, COLON,
     LBRACKET, RBRACKET,
     ASSIGN,
@@ -17,10 +20,10 @@ enum OPERATOR {
     BITOR,
     XOR,
     BITAND,
-    EQ, NEQ,
+    SHL, SHR,
+    EQ, NEQ, 
     LEQ, LT,
     GEQ, GT,
-    SHL, SHR,
     PLUS, MINUS,
     MULTIPLY, DIV, MOD
 };

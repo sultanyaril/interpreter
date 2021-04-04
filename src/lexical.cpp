@@ -2,9 +2,12 @@
 
 Lexem *get_oper(string & codeline, int & i) {
     for (int op = 0; op < NUMBER_OF_OPS; op++) {
-        string subcodeline= codeline.substr(i, OPERTEXT[op].size());
+        string subcodeline = codeline.substr(i, OPERTEXT[op].size());
         if (OPERTEXT[op] == subcodeline) {
             i += OPERTEXT[op].size();
+            if (subcodeline == "if" || subcodeline == "else" ||
+                    subcodeline == "while" || subcodeline == "endwhile" || subcodeline == "endif")
+                return new Goto(static_cast<OPERATOR>(op));
             return new Oper(subcodeline);
         }
     }

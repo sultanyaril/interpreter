@@ -59,6 +59,9 @@ Oper::Oper() {
     opertype = PLUS;
 }
 
+Oper::Oper(OPERATOR optype) : opertype(optype) {
+}
+
 Oper::Oper(string & op) {
     setType(op);
 }
@@ -127,4 +130,20 @@ int Oper :: getValue(Lexem *left, Lexem *right) {
     return -1;
 }
 
+// FUNCTIONS OF GOTO
 
+Goto :: Goto(OPERATOR optype) : Oper(optype) {
+    row = -1;
+};
+
+void Goto :: setRow(int row) {
+    Goto :: row = row;
+}
+
+void Goto :: setRow(const string &labelname) {
+    row = variables[labelname];
+}
+
+int Goto :: getRow() {
+    return row;
+}

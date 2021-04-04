@@ -26,10 +26,10 @@ Already implemented:
 * Assign
 * Logic
 * Goto
-
-Yet to be implemented:
 * If
 * While
+
+Yet to be implemented:
 * Array
 * Functions
 * Recursion

@@ -12,11 +12,25 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
             evalstack.push(poliz[i]);
             continue;
         }
+        if (poliz[i] -> getType() == IF || poliz[i] -> getType() == WHILE) {
+            int rvalue = evalstack.top()->getValue();
+            evalstack.pop();
+            if (rvalue == 0) {
+                while (!new_Numbers.empty()) {
+                    delete new_Numbers.top();
+                    new_Numbers.pop();
+                }
+                return ((Goto *)poliz[i]) -> getRow();
+            }
+            continue;
+        }
+        if (poliz[i] -> getType() == ELSE || poliz[i] -> getType() == ENDWHILE) {
+            return ((Goto *)poliz[i]) -> getRow();
+        }
         if (poliz[i] -> getType() == GOTO) {
             Lexem *a = evalstack.top();
             evalstack.pop();
-            int answ_row = variables[a -> getName()];
-            return answ_row;
+            return variables[a->getName()];
         }
         Lexem *b = evalstack.top();
         evalstack.pop();

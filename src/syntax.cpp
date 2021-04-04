@@ -17,6 +17,45 @@ void initLabels(vector <Lexem *> & infix, int row) {
     }
 }
 
+void initJumps(vector<vector<Lexem *>> & infixes) {
+    stack <Goto *> stackIfElse, stackWhile;
+    for (int row = 0; row < infixes.size(); row++) {
+        for (int i = 0; i < infixes[row].size(); i++) {
+            if (infixes[row][i] == nullptr)
+                continue;
+            if (infixes[row][i] -> type() != OPER) {
+                continue;
+            }
+            if (infixes[row][i] -> getType() == IF) {
+                stackIfElse.push((Goto *) infixes[row][i]);
+                continue;
+            }
+            if (infixes[row][i] -> getType() == ELSE) {
+                stackIfElse.top() -> setRow(row + 1);
+                stackIfElse.pop();
+                stackIfElse.push((Goto *) infixes[row][i]);
+                continue;
+            }
+            if (infixes[row][i] -> getType() == ENDIF) {
+                stackIfElse.top() -> setRow(row + 1);
+                stackIfElse.pop();
+                continue;
+            }
+            if (infixes[row][i] -> getType() == WHILE) {
+                ((Goto *)infixes[row][i]) -> setRow(row);
+                stackWhile.push((Goto *)infixes[row][i]);
+                continue;
+            }
+            if (infixes[row][i] -> getType() == ENDWHILE) {
+                ((Goto *)infixes[row][i]) -> setRow(stackWhile.top() -> getRow());
+                stackWhile.top() -> setRow(row + 1);
+                stackWhile.pop();
+            }
+        }
+    }
+
+}
+
 vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
     vector<Lexem *> poliz;
     stack<Lexem *> ops;  // operators
@@ -24,6 +63,10 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
         if (infix[i] == nullptr)
             continue;
         if (infix[i]->type() == NUMBER or infix[i]->type() == VARIABLE) {
+            poliz.push_back(infix[i]);
+            continue;
+        }
+        if (infix[i] -> getType() == ENDIF or infix[i] -> getType() == ENDWHILE) {
             poliz.push_back(infix[i]);
             continue;
         }

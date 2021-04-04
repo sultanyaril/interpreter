@@ -1,6 +1,7 @@
 #ifndef LEXICAL_H
 #define LEXICAL_H
 #include <vector>
+#include <iostream>
 #include "lexem.h"
 #include "const.h"
 vector<Lexem *> parseLexem(string & codeline);
