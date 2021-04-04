@@ -1,7 +1,6 @@
 #include "const.h"
 
 map<string, int> variables;
-map<string, int> labels;
 string OPERTEXT[] = {
     "goto", ":",
     "(", ")",

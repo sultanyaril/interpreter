@@ -13,7 +13,7 @@ all:1 2 3 main
 	g++ home/3_logic.cpp -o bin/3_logic
 
 main: bin/const.o bin/utility.o bin/lexem.o bin/lexical.o bin/semantic.o bin/syntax.o
-	g++ src/main.cpp bin/const.o bin/utility.o bin/lexem.o bin/lexical.o bin/semantic.o bin/syntax.o -I./include -o main
+	g++ src/main.cpp bin/const.o bin/utility.o bin/lexem.o bin/lexical.o bin/semantic.o bin/syntax.o -I./include -o main -fsanitize=address
 
 bin/const.o: src/const.cpp
 	mkdir -p bin

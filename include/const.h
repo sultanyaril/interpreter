@@ -26,7 +26,6 @@ enum OPERATOR {
 };
 extern int NUMBER_OF_OPS;
 extern map<string, int> variables;
-extern map<string, int> labels;
 extern string OPERTEXT[];
 extern int PRIORITY[];
 #endif

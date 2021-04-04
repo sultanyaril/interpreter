@@ -26,7 +26,8 @@ void printVector(vector<Lexem *> v) {
 void clearDoubleVector(vector<vector<Lexem *>>  v) {
     for (int i = 0; i < v.size(); i++) {
         for (int j = 0; j < v[i].size(); j++)
-            delete v[i][j];
+            if (v[i][j] != nullptr)
+                delete v[i][j];
     }
 }
 
