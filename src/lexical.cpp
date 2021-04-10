@@ -8,12 +8,6 @@ Lexem *get_oper(string & codeline, int & i) {
             if (subcodeline == "if" || subcodeline == "else" ||
                     subcodeline == "while" || subcodeline == "endwhile" || subcodeline == "endif")
                 return new Goto(static_cast<OPERATOR>(op));
-            if (subcodeline == "[") {
-                return new Oper(LSQRBRACKET);
-            }
-            if (subcodeline == "]") {
-                return new Oper(RBRACKET);
-            }
             return new Oper(subcodeline);
         }
     }

@@ -11,7 +11,6 @@ string OPERTEXT[] = {
     "while", "endwhile",
     "goto", ":",
     "(", ")",
-    "=",
     "or",
     "and",
     "|",
@@ -22,7 +21,8 @@ string OPERTEXT[] = {
     "<=", "<",
     ">=", ">",
     "+", "-",
-    "*", "/", "%"
+    "*", "/", "%",
+    "="
 };
 int PRIORITY[] = {
     -8, -8,
@@ -33,7 +33,6 @@ int PRIORITY[] = {
     -3, -3,
     -2, -2,
     -1, -1,
-    0,
     1,
     2,
     3,
@@ -44,6 +43,7 @@ int PRIORITY[] = {
     7, 7,
     8, 8,
     10, 10,
-    11, 11, 11
+    11, 11, 11,
+    0
 };
 int NUMBER_OF_OPS = sizeof(PRIORITY) / sizeof(int);

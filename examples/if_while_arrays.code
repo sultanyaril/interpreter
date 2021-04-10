@@ -1,0 +1,11 @@
+arr array 100
+i = 0
+while i < 100
+    if i % 2 == 0
+        arr[i] = 1
+    else
+        arr[i] = 0
+    endif
+    print arr[i]
+    i = i + 1
+endwhile

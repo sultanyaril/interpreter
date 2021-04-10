@@ -17,7 +17,6 @@ enum OPERATOR {
     WHILE, ENDWHILE,
     GOTO, COLON,
     LBRACKET, RBRACKET,
-    ASSIGN,
     OR,
     AND,
     BITOR,
@@ -28,7 +27,8 @@ enum OPERATOR {
     LEQ, LT,
     GEQ, GT,
     PLUS, MINUS,
-    MULTIPLY, DIV, MOD
+    MULTIPLY, DIV, MOD,
+    ASSIGN
 };
 extern int NUMBER_OF_OPS;
 extern map<string, int> variables;

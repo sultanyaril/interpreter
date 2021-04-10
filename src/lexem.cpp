@@ -89,10 +89,6 @@ int Oper :: getPriority() {
 
 int Oper :: getValue(Lexem *left, Lexem *right) {
     switch(opertype) {
-        // case LVALUE:
-            // return static_cast<int>(&(arrays[left->getName()][right->getValue()]));
-        case RVALUE:
-            return arrays[left->getName()][right->getValue()];
         case ARRAY:
             arrays[left -> getName()] = new int[right->getValue()];
             return 0;

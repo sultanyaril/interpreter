@@ -26,6 +26,9 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
             cout << evalstack.top()->getValue() << endl;
             continue;
         }
+        if (poliz[i] -> getType() == ENDIF) {
+            continue;
+        }
         if (poliz[i] -> getType() == IF || poliz[i] -> getType() == WHILE) {
             int rvalue = evalstack.top()->getValue();
             evalstack.pop();
