@@ -1,7 +1,10 @@
 #include "const.h"
 
 map<string, int> variables;
+map<string, int*> arrays;
 string OPERTEXT[] = {
+    "[", "]",
+    "array",
     "print",
     "if",
     "else", "endif",
@@ -22,6 +25,8 @@ string OPERTEXT[] = {
     "*", "/", "%"
 };
 int PRIORITY[] = {
+    -8, -8,
+    -7,
     -6,
     -5,
     -4, -4,

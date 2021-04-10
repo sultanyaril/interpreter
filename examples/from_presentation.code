@@ -1,0 +1,10 @@
+a array 10
+b array 10
+c array 10
+d array 10
+a[1] = 666
+b[5] = 1
+c[1] = 200
+d[7] = 1
+print a[b[5]] = c[d[7]]
+print a[1]

@@ -12,6 +12,16 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
             evalstack.push(poliz[i]);
             continue;
         }
+        if (poliz[i] -> getType() == LVALUE) {
+            int val = evalstack.top()->getValue();
+            evalstack.pop();
+            Lexem *ele = new ArrayElement(evalstack.top()->getName());
+            evalstack.pop();
+            ((ArrayElement*)ele) -> setPosition(val);
+            evalstack.push(ele);
+            new_Numbers.push(ele);
+            continue;
+        }
         if (poliz[i] -> getType() == PRINT) {
             cout << evalstack.top()->getValue() << endl;
             continue;

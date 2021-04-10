@@ -28,9 +28,9 @@ Already implemented:
 * Goto
 * If
 * While
+* Array
 
 Yet to be implemented:
-* Array
 * Functions
 * Recursion
 

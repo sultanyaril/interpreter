@@ -26,8 +26,8 @@ int main() {
         row = evaluatePoliz(postfixLines[row], row);
     }
     clearDoubleVector(infixLines);
-	// cout << "VALUE: " << row << endl;
-    // printVar();
-    // cout << endl;
+    for (map<string, int*>::iterator it=arrays.begin(); it != arrays.end(); it++) {
+        delete[] it->second;
+    }
 	return 0;
 }

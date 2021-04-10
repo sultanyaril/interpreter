@@ -89,6 +89,13 @@ int Oper :: getPriority() {
 
 int Oper :: getValue(Lexem *left, Lexem *right) {
     switch(opertype) {
+        // case LVALUE:
+            // return static_cast<int>(&(arrays[left->getName()][right->getValue()]));
+        case RVALUE:
+            return arrays[left->getName()][right->getValue()];
+        case ARRAY:
+            arrays[left -> getName()] = new int[right->getValue()];
+            return 0;
         case PLUS:
             return right->getValue() + left->getValue();
         case MINUS:
@@ -146,4 +153,19 @@ void Goto :: setRow(const string &labelname) {
 
 int Goto :: getRow() {
     return row;
+}
+
+ArrayElement :: ArrayElement(string name) : array_name(name) {
+}
+
+int ArrayElement :: getValue() {
+    return arrays[array_name][position];
+}
+
+void ArrayElement :: setValue(int val) {
+    arrays[array_name][position] = val;
+}
+
+void ArrayElement :: setPosition(int pos) {
+    position = pos;
 }

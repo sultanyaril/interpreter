@@ -75,4 +75,14 @@ public:
     int getRow();
 };
 
+class ArrayElement : public Lexem {
+    string array_name;
+    int position;
+public:
+    ArrayElement(string);
+    int getValue();
+    void setValue(int);
+    void setPosition(int);
+};
+
 #endif

@@ -9,6 +9,8 @@ enum TYPE {
 };
 
 enum OPERATOR {
+    LVALUE, RVALUE,
+    ARRAY,
     PRINT,
     IF,
     ELSE, ENDIF,
@@ -30,6 +32,7 @@ enum OPERATOR {
 };
 extern int NUMBER_OF_OPS;
 extern map<string, int> variables;
+extern map<string, int*> arrays;
 extern string OPERTEXT[];
 extern int PRIORITY[];
 #endif
