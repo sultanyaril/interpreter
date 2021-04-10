@@ -66,10 +66,10 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
             poliz.push_back(infix[i]);
             continue;
         }
-        if (infix[i] -> getType() == ENDIF or infix[i] -> getType() == ENDWHILE) {
-            poliz.push_back(infix[i]);
-            continue;
-        }
+//        if (infix[i] -> getType() == ENDIF or infix[i] -> getType() == ENDWHILE) {
+//            poliz.push_back(infix[i]);
+//            continue;
+//        }
         if (infix[i] -> getType() == LBRACKET) {
             ops.push(infix[i]);
             continue;

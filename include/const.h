@@ -9,6 +9,7 @@ enum TYPE {
 };
 
 enum OPERATOR {
+    PRINT,
     IF,
     ELSE, ENDIF,
     WHILE, ENDWHILE,

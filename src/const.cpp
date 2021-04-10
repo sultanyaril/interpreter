@@ -2,6 +2,7 @@
 
 map<string, int> variables;
 string OPERTEXT[] = {
+    "print",
     "if",
     "else", "endif",
     "while", "endwhile",
@@ -21,6 +22,7 @@ string OPERTEXT[] = {
     "*", "/", "%"
 };
 int PRIORITY[] = {
+    -6,
     -5,
     -4, -4,
     -3, -3,

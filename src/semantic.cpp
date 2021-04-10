@@ -12,6 +12,10 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
             evalstack.push(poliz[i]);
             continue;
         }
+        if (poliz[i] -> getType() == PRINT) {
+            cout << evalstack.top()->getValue() << endl;
+            continue;
+        }
         if (poliz[i] -> getType() == IF || poliz[i] -> getType() == WHILE) {
             int rvalue = evalstack.top()->getValue();
             evalstack.pop();
@@ -43,7 +47,6 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
     if (evalstack.top()) {
         int answ = evalstack.top() -> getValue();
         evalstack.pop();
-        cout << answ << endl;
     }
     evalstack.pop();
     while (!new_Numbers.empty()) {
