@@ -12,7 +12,7 @@ int evaluatePoliz(vector<Lexem *> poliz, int row) {
             evalstack.push(poliz[i]);
             continue;
         }
-        if (poliz[i] -> getType() == LVALUE) {
+        if (poliz[i] -> getType() == LSQRBRACKET) {
             int val = evalstack.top()->getValue();
             evalstack.pop();
             Lexem *ele = new ArrayElement(evalstack.top()->getName());

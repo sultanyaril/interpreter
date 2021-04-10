@@ -9,7 +9,7 @@ enum TYPE {
 };
 
 enum OPERATOR {
-    LVALUE, RVALUE,
+    LSQRBRACKET, RSQRBRACKET,
     ARRAY,
     PRINT,
     IF,

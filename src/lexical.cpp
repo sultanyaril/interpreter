@@ -1,6 +1,4 @@
 #include "lexical.h"
-bool before_assign = true;
-bool lvalue_found = false;
 
 Lexem *get_oper(string & codeline, int & i) {
     for (int op = 0; op < NUMBER_OF_OPS; op++) {
@@ -11,12 +9,7 @@ Lexem *get_oper(string & codeline, int & i) {
                     subcodeline == "while" || subcodeline == "endwhile" || subcodeline == "endif")
                 return new Goto(static_cast<OPERATOR>(op));
             if (subcodeline == "[") {
-                if (!lvalue_found) {
-                    lvalue_found = true;
-                    return new Oper(LVALUE);
-                } else {
-                    return new Oper(RVALUE);
-                }
+                return new Oper(LSQRBRACKET);
             }
             if (subcodeline == "]") {
                 return new Oper(RBRACKET);
@@ -86,7 +79,5 @@ vector<Lexem *> parseLexem(string & codeline) {
             continue;
         }
     }
-    before_assign = true;
-    lvalue_found = false;
     return answ;
 }

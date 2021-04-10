@@ -68,12 +68,12 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
             poliz.push_back(infix[i]);
             continue;
         }
-        if (infix[i] -> getType() == LBRACKET or infix[i] -> getType() == LVALUE or infix[i] -> getType() == RVALUE) {
+        if (infix[i] -> getType() == LBRACKET or infix[i] -> getType() == LSQRBRACKET) {
             ops.push(infix[i]);
             continue;
         }
         if (infix[i]->getType() == RBRACKET) {
-            while (ops.top() -> getType() != LBRACKET and ops.top() -> getType() != LVALUE and ops.top() -> getType() != RVALUE) {
+            while (ops.top() -> getType() != LBRACKET and ops.top() -> getType() != LSQRBRACKET) {
                 poliz.push_back(ops.top());
                 ops.pop();
             }
