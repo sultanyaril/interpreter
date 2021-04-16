@@ -1,0 +1,8 @@
+function func()
+    n = 2
+    print n
+    return 100
+
+n = 5
+func()
+print n

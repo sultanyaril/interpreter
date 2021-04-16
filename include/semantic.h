@@ -3,5 +3,7 @@
 #include <stack>
 #include <iostream>
 #include "lexem.h"
-int evaluatePoliz(vector<Lexem *> poliz, int row);
+#include "const.h"
+#include "utility.h"
+int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row);
 #endif

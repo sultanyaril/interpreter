@@ -16,6 +16,17 @@ void initLabels(vector <Lexem *> & infix, int row) {
                 i++;
             }
         }
+        if (infix[i - 1]->type() == OPER and infix[i - 1] -> getType() == FUNCTION) {
+            functions[infix[i] -> getName()].number_of_args = infix.size() - i - 3;
+            functions[infix[i] -> getName()].row_to_jump = row;
+            delete infix[i];
+            delete infix[i + 1];
+            delete infix[infix.size() - 1];
+            infix[i + 1] = nullptr;  // delete brackets
+            infix[infix.size() - 1] = nullptr;
+            infix[i] = nullptr;
+            return;
+        }
     }
 }
 
@@ -62,8 +73,14 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
     vector<Lexem *> poliz;
     stack<Lexem *> ops;  // operators
     for (int i = 0; i < infix.size(); i++) {
+        Lexem *function_holder = nullptr;
+        int bracket_counter = 0;
         if (infix[i] == nullptr)
             continue;
+        if (infix[i]->type() == VARIABLE and functions.find(infix[i] -> getName()) != functions.end()) {
+            ops.push(infix[i]);
+            continue;
+        }
         if (infix[i]->type() == NUMBER or infix[i]->type() == VARIABLE) {
             poliz.push_back(infix[i]);
             continue;
@@ -77,9 +94,13 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
                 poliz.push_back(ops.top());
                 ops.pop();
             }
-            if (ops.top()->getType()==LBRACKET) {
-                delete ops.top();
-                ops.pop();
+            if (ops.top()->getType() == LBRACKET) {
+                if (ops.top()->type() == VARIABLE and functions.find(infix[i]->getName()) != functions.end() ) {
+                    poliz.push_back(ops.top());
+                    ops.pop();
+                    poliz.push_back(ops.top());
+                    ops.pop();
+                }
             } else {
                 poliz.push_back(ops.top());
                 ops.pop();

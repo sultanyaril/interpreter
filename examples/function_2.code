@@ -1,0 +1,9 @@
+function f(n)
+    n = n + 2
+    print n
+    return n + 2
+
+n = 5
+print f(n)
+print n
+

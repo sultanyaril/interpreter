@@ -1,8 +1,11 @@
 #include "const.h"
-
 map<string, int> variables;
 map<string, int*> arrays;
+map<string, Function> functions;
+stack<int> global_stack;
 string OPERTEXT[] = {
+    "return",
+    "function", "endfunction",
     "[", "]",
     "array",
     "print",
@@ -25,6 +28,8 @@ string OPERTEXT[] = {
     "="
 };
 int PRIORITY[] = {
+    -10,
+    -9, -9,
     -8, -8,
     -7,
     -6,

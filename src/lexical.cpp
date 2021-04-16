@@ -6,7 +6,8 @@ Lexem *get_oper(string & codeline, int & i) {
         if (OPERTEXT[op] == subcodeline) {
             i += OPERTEXT[op].size();
             if (subcodeline == "if" || subcodeline == "else" ||
-                    subcodeline == "while" || subcodeline == "endwhile" || subcodeline == "endif")
+                    subcodeline == "while" || subcodeline == "endwhile" || subcodeline == "endif" ||
+                    subcodeline == "function")
                 return new Goto(static_cast<OPERATOR>(op));
             return new Oper(subcodeline);
         }

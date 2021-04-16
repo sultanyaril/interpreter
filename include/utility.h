@@ -9,4 +9,6 @@ using namespace std;
 void printVar();
 void printVector(vector<Lexem *> v);
 void clearDoubleVector(vector<vector<Lexem *>> v);
+void printDoubleVector(vector<vector<Lexem *>> v);
+int searchMain(vector<vector<Lexem *>>);
 #endif

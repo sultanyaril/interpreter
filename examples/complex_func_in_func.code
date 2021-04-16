@@ -1,0 +1,9 @@
+function f1(a b)
+    return a + b + 100
+
+function f2(a b)
+    return a + b + 1000
+
+a = 1
+b = 2
+print f1(f2(a b) b)

@@ -1,0 +1,12 @@
+function f1(a)
+    a = a + 100
+    print a
+return a
+
+function f2(a)
+    a = a + 200
+    print a
+return a
+
+a = 12
+print f2(f1(a))
