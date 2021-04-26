@@ -73,6 +73,7 @@ vector<Lexem *> parseLexem(string & codeline) {
             answ.push_back(lexem);
             continue;
         }
+        i++;
     }
     return answ;
 }

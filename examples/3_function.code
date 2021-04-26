@@ -1,8 +1,8 @@
-function func(a b)
+function func(a, b)
     print a
     print b
 return
 
 a = 4
 b = 5
-func(a b)
+func(a, b)
