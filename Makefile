@@ -1,4 +1,4 @@
-all:1 2 3 main
+all:1 2 3 main libmake
 
 1: home/1_arithmetic.cpp
 	mkdir -p bin
@@ -36,4 +36,27 @@ bin/syntax.o: src/syntax.cpp
 
 clean: 
 	rm -r bin
+	rm -r lib
 	rm main
+libmake: lib/libconst.so lib/libutility.so lib/liblexem.so lib/liblexical.so lib/libsemantic.so lib/libsyntax.so
+	g++ src/main.cpp -I./include -L./lib -lconst -lutility -llexem -llexical -lsemantic -lsyntax -o main
+
+lib/libconst.so: src/const.cpp
+	mkdir -p lib
+	g++ src/const.cpp -I./include -fpic -shared -o lib/libconst.so
+
+lib/libutility.so: src/utility.cpp
+	g++ src/utility.cpp -I./include -fpic -shared -o lib/libutility.so
+
+lib/liblexem.so: src/lexem.cpp
+	g++ src/lexem.cpp -I./include -fpic -shared -o lib/liblexem.so
+
+lib/liblexical.so: src/lexical.cpp
+	g++ src/lexical.cpp -I./include -fpic -shared -o lib/liblexical.so
+
+lib/libsemantic.so: src/semantic.cpp
+	g++ src/semantic.cpp -I./include -fpic -shared -o lib/libsemantic.so
+
+lib/libsyntax.so: src/syntax.cpp
+	g++ src/syntax.cpp -I./include -fpic -shared -o lib/libsyntax.so
+
