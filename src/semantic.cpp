@@ -1,4 +1,4 @@
-#include "semantic.h"
+#include <semantic.h>
 
 int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
     vector<Lexem *> poliz = polizLines[row];

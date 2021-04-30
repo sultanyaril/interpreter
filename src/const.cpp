@@ -1,4 +1,4 @@
-#include "const.h"
+#include <const.h>
 map<string, int> variables;
 map<string, int*> arrays;
 map<string, Function> functions;

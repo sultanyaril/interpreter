@@ -3,11 +3,11 @@
 #include <vector>
 #include <stack>
 #include <map>
-#include "lexem.h"
-#include "lexical.h"
-#include "syntax.h"
-#include "semantic.h"
-#include "utility.h"
+#include <lexem.h>
+#include <lexical.h>
+#include <syntax.h>
+#include <semantic.h>
+#include <utility.h>
 
 int main() {
 	string codeline;

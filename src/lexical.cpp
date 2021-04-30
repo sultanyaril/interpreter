@@ -1,4 +1,4 @@
-#include "lexical.h"
+#include <lexical.h>
 
 Lexem *get_oper(string & codeline, int & i) {
     for (int op = 0; op < NUMBER_OF_OPS; op++) {

@@ -1,4 +1,4 @@
-#include "lexem.h"
+#include <lexem.h>
 
 // FUNCTIONS OF LEXEM
 Lexem::Lexem() {

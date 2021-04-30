@@ -1,4 +1,4 @@
-#include "syntax.h"
+#include <syntax.h>
 
 
 void initLabels(vector <Lexem *> & infix, int row) {
