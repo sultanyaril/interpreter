@@ -20,7 +20,7 @@ void printVector(vector<Lexem *> v) {
             cout << v[i]->getName()<< ' ';
             continue;
         }
-        cout << v[i] -> getType() << ' ';
+        cout << OPERTEXT[(v[i] -> getType())] << ' ';
     }
     cout << endl;
 }

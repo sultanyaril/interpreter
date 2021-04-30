@@ -73,8 +73,6 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
     vector<Lexem *> poliz;
     stack<Lexem *> ops;  // operators
     for (int i = 0; i < infix.size(); i++) {
-        Lexem *function_holder = nullptr;
-        int bracket_counter = 0;
         if (infix[i] == nullptr)
             continue;
         if (infix[i]->type() == VARIABLE and functions.find(infix[i] -> getName()) != functions.end()) {
@@ -95,9 +93,10 @@ vector<Lexem *> buildPoliz(vector<Lexem *> infix) {
                 ops.pop();
             }
             if (ops.top()->getType() == LBRACKET) {
-                if (ops.top()->type() == VARIABLE and functions.find(infix[i]->getName()) != functions.end() ) {
-                    poliz.push_back(ops.top());
-                    ops.pop();
+                Lexem *bracketHolder = ops.top();
+                ops.pop();
+                if (ops.top()->type() == VARIABLE and functions.find(ops.top()->getName()) != functions.end() ) {
+                    poliz.push_back(bracketHolder);
                     poliz.push_back(ops.top());
                     ops.pop();
                 }
