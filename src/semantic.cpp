@@ -3,7 +3,7 @@
 int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
     vector<Lexem *> poliz = polizLines[row];
     stack<Lexem *> evalstack;
-    stack<Lexem *> new_Numbers;
+    stack<Lexem *> newNumbers;
     evalstack.push(nullptr);
     for (int i = 0; i < poliz.size(); i++) {
         if (poliz[i] == nullptr) {
@@ -20,9 +20,9 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
             }
             variables.clear();
             arrays.clear();
-            while (!new_Numbers.empty()) {
-                delete new_Numbers.top();
-                new_Numbers.pop();
+            while (!newNumbers.empty()) {
+                delete newNumbers.top();
+                newNumbers.pop();
             }
             return -1;
         }
@@ -68,7 +68,7 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
             if (!global_stack.empty()) {
                 evalstack.push(new Number(global_stack.top()));
                 global_stack.pop();
-                new_Numbers.push(evalstack.top());
+                newNumbers.push(evalstack.top());
             }
             continue;
         }
@@ -79,7 +79,7 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
             evalstack.pop();
             ((ArrayElement*)ele) -> setPosition(val);
             evalstack.push(ele);
-            new_Numbers.push(ele);
+            newNumbers.push(ele);
             continue;
         }
         if (poliz[i] -> getType() == PRINT) {
@@ -93,9 +93,9 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
             int rvalue = evalstack.top()->getValue();
             evalstack.pop();
             if (rvalue == 0) {
-                while (!new_Numbers.empty()) {
-                    delete new_Numbers.top();
-                    new_Numbers.pop();
+                while (!newNumbers.empty()) {
+                    delete newNumbers.top();
+                    newNumbers.pop();
                 }
                 return ((Goto *)poliz[i]) -> getRow();
             }
@@ -114,7 +114,7 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
         Lexem *a = evalstack.top();
         evalstack.pop();
         evalstack.push(new Number(poliz[i] -> getValue(a, b)));
-        new_Numbers.push(evalstack.top());
+        newNumbers.push(evalstack.top());
         continue;
     }
     if (evalstack.top()) {
@@ -122,9 +122,9 @@ int evaluatePoliz(vector<vector<Lexem *>> &polizLines, int row) {
         evalstack.pop();
     }
     evalstack.pop();
-    while (!new_Numbers.empty()) {
-        delete new_Numbers.top();
-        new_Numbers.pop();
+    while (!newNumbers.empty()) {
+        delete newNumbers.top();
+        newNumbers.pop();
     }
     return row + 1;
 }
